@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const mongoose = require('mongoose')
+const ejsMate = require('ejs-mate')
 const Campground = require('./models/campground')
 mongoose.connect('mongodb://localhost:27017/yelp-camp',{
     useNewUrlParser:true,
@@ -20,8 +21,13 @@ const methodOverride = require('method-override');
 const { urlencoded } = require('express');
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({extended:true}))
+app.engine('ejs',ejsMate)
 app.listen(3000,()=>{
     console.log('ON PORT 3000!')
+})
+
+app.get('/',(req,res) => {
+    res.render('campgrounds/home')
 })
 
 app.get('/campgrounds',async (req,res) => {
