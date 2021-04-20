@@ -1,33 +1,37 @@
 <% layout('layouts/boilerplate') %>
-    
     <div class="row">
         <h1 class="text-center">New Campground</h1>
         <div class="col-6 offset-3">
-            <form action="/campgrounds" method="POST">
+            <form action="/campgrounds" method="POST" novalidate class="validate">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input class="form-control" type="text" name="campground[title]" id='title'>
+                <input class="form-control" type="text" name="campground[title]" id='title' required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                
             </div>
+            
         
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" name="campground[location]" id="location">
+                <input type="text" class="form-control" name="campground[location]" id="location" required>
             </div>
 
             <div class="input-group mb-3">
                 <span class="input-group-text">Price</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="campground[price]">
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="campground[price]" required>
                 <span class="input-group-text">.00</span>
               </div>
 
             <div class="mb-3">
                 <label for="image" class="form-label">Image Urls</label>
-                <input type="text" class="form-control" name="campground[image]" id="image">
+                <input type="text" class="form-control" name="campground[image]" id="image" required>
             </div>
             
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" name="campground[description]" id="description"></textarea>
+                <textarea type="text" class="form-control" name="campground[description]" id="description" required></textarea>
             </div>
             <div class="mb-3">
             <button class="btn btn-success">Submit</button>
@@ -36,10 +40,6 @@
         </div>
         
     </div>
-    
-  
-        
-    
-    <footer>
+     <footer>
         <a href="/campgrounds">All campgrounds</a>
     </footer>
